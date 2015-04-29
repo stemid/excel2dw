@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Excel to DokuWiki table conversion tool</title>
+    <meta name="description" content="Convert tables from Excel to DokuWiki format">
+    <meta name="author" content="Stefan Midjich">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+  <body>
+
+    <div class="section hero">
+      <div class="container">
+        <div class="row">
+          <div class="one-half column">
+            <h4 class="hero heading">Omvandla Excel rader till DokuWiki tabell</h4>
+            <form id="ConvertForm" action="/csv2dwtable">
+              <div class="row">
+                <span class="help-block">Klistra in kolumner från Excel</span>
+                <label for="ConvertFormInput">Klistra in kolumner från Excel</label>
+                <textarea class="form-control" class="u-full-width" placeholder="Data..." id="ConvertFormInput" name="Input" rows="10"></textarea>
+              </div>
+              <div class="row">
+                <label id="InputTypePaste">
+                  <span>Välj typ av data</span>
+                  <input type="radio" name="InputType" value="Paste" checked="checked">
+                </label>
+                <label id="InputTypeCSV">
+                  <span>Klistra in från CSV</span>
+                  <input type="radio" name="InputType" value="CSV">
+                </label>
+              </div>
+              <div class="row onoffswitch">
+                <button class="button-primary" type="submit">Omvandla</button>
+                <button class="button" type="reset">Återställ</button>
+                <label for="InputHeader">
+                  <input type="checkbox" name="InputHeader" id="InputHeader" class="onoffswitch-checkbox" checked="unchecked">
+                  <span class="onoffswitch-inner"></span>
+                  <span class="onoffswitch-switch"></span>
+                </label>
+              </div>
+            </form>
+
+          </div>
+          <div class="one-half column formresults hide">
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript" src="/static/assets/js/excel2dw.js"></script>
+</html>
+
