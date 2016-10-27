@@ -47,13 +47,8 @@ function excel2dw(data, type, header) {
 }
 
 $(document).ready(function () {
-    $('#ConvertForm #ResetBtn').on('click', function () {
-      $('#InputTypeCSV').removeClass('active');
-      $('#InputTypePaste').addClass('active');
-    });
-
-    var formDiv = $('#Excel2DwForm'),
-        resultsDiv = $('#FormResults'),
+    var formDiv = $('#ConvertForm'),
+        resultsDiv = $('#results'),
         button = '<button class="btn btn-primary" id="StartOver">Börja om</button>';
 
     $('#ConvertForm').submit(function (event) {
@@ -70,8 +65,6 @@ $(document).ready(function () {
             return false;
         }
 
-        resultsDiv.addClass('hide');
-
         if (inputHeader == 'on') {
             inputHeader = true;
         } else {
@@ -83,16 +76,17 @@ $(document).ready(function () {
         dwData = '';
         dwData = excel2dw(input, inputType, inputHeader);
 
-        formDiv.addClass('hide');
+        formDiv.addClass('hidden');
 
         resultsDiv.html('<p class="lead">Kopiera och klistra in tabellen i DokuWiki</p>\n<pre>' + dwData + '</pre>' + button);
-        resultsDiv.removeClass('hide');
+        resultsDiv.removeClass('hidden');
+        resultsDiv.show();
 
         $('#StartOver').on('click', function () {
-            resultsDiv.addClass('hide');
-            formDiv.removeClass('hide');
+            resultsDiv.addClass('hidden');
+            formDiv.removeClass('hidden');
         });
-        
+
         $inputs.prop('disabled', false);
     });
 });

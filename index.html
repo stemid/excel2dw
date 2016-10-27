@@ -7,52 +7,66 @@
     <meta name="author" content="Stefan Midjich">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/normalize.css">
+    <!--<link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/skeleton.css">
-    <link rel="stylesheet" href="css/custom.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/custom.css">-->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" href="css/excel2dw.css">
   </head>
   <body>
 
     <div class="container">
       <div class="row">
-        <div class="one-half column">
-          <h4 class="hero heading">Omvandla Excel rader till DokuWiki tabell</h4>
+        <h2 class="heading">Omvandla Excel rader till DokuWiki tabell</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <form id="ConvertForm" action="/csv2dwtable">
             <div class="row">
-              <span class="help-block">Klistra in kolumner från Excel</span>
-              <label for="ConvertFormInput">Klistra in kolumner från Excel</label>
-              <textarea class="form-control" class="u-full-width" placeholder="Data..." id="ConvertFormInput" name="Input" rows="10"></textarea>
+              <textarea placeholder="Data..." id="ConvertFormInput" name="Input" rows="10"></textarea>
             </div>
             <div class="row">
-              <label id="InputTypePaste">
-                <span>Välj typ av data</span>
-                <input type="radio" name="InputType" value="Paste" checked="checked">
-              </label>
-              <label id="InputTypeCSV">
-                <span>Klistra in från CSV</span>
-                <input type="radio" name="InputType" value="CSV">
-              </label>
+              <div class="col-md-6">
+                <label id="InputTypePaste">
+                  <input type="radio" name="InputType" value="Paste" checked="checked">
+                  <span>Klistra in från Excel</span>
+                </label>
+                <label id="InputTypeCSV">
+                  <input type="radio" name="InputType" value="CSV">
+                  <span>Klistra in från CSV</span>
+                </label>
+              </div>
+              <div class="col-md-6">
+                <label class="onoffswitch-label" for="InputHeader">
+                  <input type="checkbox" name="InputHeader" id="InputHeader" class="onoffswitch-checkbox">
+                  <span class="onoffswitch-switch">Klistra in med huvud</span>
+                </label>
+              </div>
             </div>
-            <div class="row onoffswitch">
+            <div class="row">
               <button class="button-primary" type="submit">Omvandla</button>
-              <button class="button" type="reset">Återställ</button>
-              <label for="InputHeader">
-                <input type="checkbox" name="InputHeader" id="InputHeader" class="onoffswitch-checkbox" checked="unchecked">
-                <span class="onoffswitch-inner"></span>
-                <span class="onoffswitch-switch"></span>
-              </label>
+              <button id="ResetBtn" class="button input" type="reset">Återställ</button>
             </div>
           </form>
-
-        </div>
-        <div class="one-half column formresults hide">
         </div>
       </div>
+
+      <div id="results" class="row formresults collapse">
+      </div>
+
     </div>
 
   </body>
 
+  <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/excel2dw.js"></script>
+
 </html>
 
